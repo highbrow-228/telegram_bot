@@ -1,5 +1,3 @@
-import os
-from dotenv import load_dotenv
 import telebot
 
 from source.help import help_command
@@ -8,7 +6,6 @@ from source.temperature import temperature_command, get_city_weather
 from source.media import handle_media
 from config import bot
 
-load_dotenv()
 
 @bot.message_handler(commands=['start'])
 def start(message):
