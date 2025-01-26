@@ -6,5 +6,9 @@ def translate_description(description, language):
     if language == 'en':
         return description
 
-    # Otherwise, translate to the desired language
-    return translator.translate(description, dest=language).text
+    match language:
+        case 'uk' | 'ru':
+            return translator.translate(description, dest='uk').text
+        case _:
+            # Otherwise, translate to the desired language
+            return translator.translate(description, dest=language).text

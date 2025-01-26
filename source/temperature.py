@@ -7,7 +7,10 @@ from googletrans import Translator
 from utils.language import translate_description
 from utils.weather import fetch_weather
 from config import bot, WEATHER_API_KEY
+from logs.setup_logging import setup_logger
 
+
+logger = setup_logger()
 # Dictionary to track the state of each user, based on their chat ID
 user_states = {}
 
@@ -39,6 +42,7 @@ def get_city_weather(message):
     # Language detection
     try:
         language = detect(city)
+        logger.info(f"Detect language {language} from user city \"{city}\"")
     except Exception:
         language = 'en'
 
@@ -58,7 +62,7 @@ def get_city_weather(message):
 
             # Format weather forecast based on language
             match language:
-                case 'uk':  # Ukrainian
+                case 'uk' | 'ru':
                     weather_forecast = (
                         f"🌤 Погода в {city.capitalize()}:\n"
                         f"Температура: {data['main']['temp']}°C\n"

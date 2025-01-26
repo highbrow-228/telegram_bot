@@ -3,3 +3,7 @@
 
 # Cache
 __pycache__
+
+# Logs
+*.log
+*.log.*
