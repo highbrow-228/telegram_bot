@@ -15,7 +15,6 @@ def english_menu_command(message):
         telebot.types.InlineKeyboardButton('A2 level', callback_data='A2', url="https://test-english.com/vocabulary/a2/"),
         telebot.types.InlineKeyboardButton('B1 level', callback_data='B1', url="https://test-english.com/vocabulary/b1/"),
         telebot.types.InlineKeyboardButton('B2 level', callback_data='B2', url="https://test-english.com/vocabulary/b2/"),
-        telebot.types.InlineKeyboardButton('C1 level', callback_data='C1', url="https://test-english.com/vocabulary/c1/"),
     )
 
     bot.send_message(
