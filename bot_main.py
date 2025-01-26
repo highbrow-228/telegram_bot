@@ -4,6 +4,7 @@ from source.help import help_command
 from source.menu import english_menu_command, menu_command
 from source.temperature import temperature_command, get_city_weather
 from source.media import handle_media
+from source.currency_conversion import convert
 from logs.setup_logging import setup_logger
 from config import bot
 
@@ -32,6 +33,16 @@ def help(message):
 def menu(message):
     menu_command(message)
     logger.info(f"Recieve command /menu from user @{message.from_user.username}")
+
+@bot.message_handler(commands=['currency_conversion'])
+def currency_conversion(message):
+    bot.register_next_step_handler(message, convert)
+    bot.send_message(
+        message.chat.id,
+        "Please enter amount:",
+    )
+
+    logger.info(f"Recieve command /currency_conversion from user @{message.from_user.username}")
 
 @bot.message_handler(commands=['english'])
 def english_menu(message):
